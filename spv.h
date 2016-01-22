@@ -7,7 +7,7 @@
 /*
 *****************************************************************************************
                           SPV - Sohans Psuedo Vector for C
-		            Use C++ STL vectors, in C! 
+		            Use C++ STL vectors, in C!
                             Author: Sohan Chowdhury
                             Email: Sifat3D@gmail.com
                             Website: www.sohan.cf
@@ -18,12 +18,12 @@
 	much more.
 
         SPV contains almost every feature of C++ STL vectors, but it does not claim
-        to be as efficient or fast. SPV uses the same concept as C++ vectors, by 
+        to be as efficient or fast. SPV uses the same concept as C++ vectors, by
 	creating new arrays and copying old arrays to it. The memory consumption and
 	runtime can grow pretty large if the size of the array is significant because
 	SPV does not have the optimizations of STL vectors. But for small programs or
 	projects where C is necessary but memory is not that much of a concern and the
-	data size is not extremely large, SPV can be used as a make shift alternative 
+	data size is not extremely large, SPV can be used as a make shift alternative
 	to C++ vector functionality.
 
         Using SPV is as simple as typing:
@@ -60,7 +60,22 @@ struct SPV{
     int size;
 };
 
-void SPVconstruct(int size, SPV* this)  //constructor function, must be called by user before using SPV
+void SPVconstruct(int size, SPV* this)  //constructor function, zero initializes, must be called by user before using SPV
+{
+    this->spv = malloc(size*(sizeof(SPVtype)));
+    this->size = size;
+    this->first = 0;
+    this->last = size-1;
+
+    //zero initialization just to be safe.
+    int i;
+    for(i = this->first; i<=this->last; i++)
+    {
+        this->spv[i] = 0;
+    }
+}
+
+void SPVconstructRaw(int size, SPV* this)  //constructor function, DOES NOT INITIALIZE, must be called by user before using SPV
 {
     this->spv = malloc(size*(sizeof(SPVtype)));
     this->size = size;
