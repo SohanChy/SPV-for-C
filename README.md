@@ -12,11 +12,16 @@ SPV contains almost every feature of C++ STL vectors, but it does not claim to b
 ----------
 
 
-Using SPV is as simple as typing:
+Using SPV is as simple as downloading the [spv.h header file](https://github.com/SohanChy/SPV-for-C/blob/master/spv.h), and copying it to your project directory(where your main.c file is).
+And including it by typing in the header:
+
+    #include "spv.h"
+
+Then simply type in main() :
 
     int size = 1;
     SPV example;
-    SPVconstruct( size , &example)
+    SPVconstruct( size , &example); 
 
 Thats it!
 Now you can use SPV as simply as:
