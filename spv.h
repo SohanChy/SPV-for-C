@@ -12,9 +12,10 @@
                             Email: Sifat3D@gmail.com
                             Website: www.sohan.cf
 
-	A struct, malloc and free based attempt to emulate C++ STL vectors in C.
+	Use C++ STL vectors, in C!
         Sohans Psuedo Vector for C or SPV is a struct and a collection of functions
-        in C which allows resizing, inserting, deleting, sorting and much much more.
+        in C which allows resizing, inserting, deleting, sorting of arrays and much
+	much more.
 
         SPV contains almost every feature of C++ STL vectors, but it does not claim
         to be as efficient or fast. SPV uses the same concept as C++ vectors, by 
@@ -26,17 +27,21 @@
 	to C++ vector functionality.
 
         Using SPV is as simple as typing:
-                                    int size = 1;
-                                    SPV example;
-                                    SPVconstruct( size , &example)
-
-                                    //Thats it!
-                                    //Now you can SPV as simply as:
-
-                                    example.spv[0] = 5;
+		int size = 1;
+		SPV example;
+		SPVconstruct( size , &example)
+		//Thats it!
+		//Now you can SPV as simply as:
+		example.spv[0] = 5;
 
         SPVconstruct() MUST be called before using a SPV object, it is recommended to
         call it right below the declaration.
+
+	The default data type is int, but it can be easily changed by simply editing the spv.h file.
+		//Change %d to the appropriate printf format-specifier for your data type of choice.
+		#define SPVprintf "%d "
+		//Change int to whatever data type you want.
+		typedef int SPVtype;
 
 *****************************************************************************************
 */
