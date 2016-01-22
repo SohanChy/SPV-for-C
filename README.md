@@ -2,7 +2,7 @@
 SPV - Sohans Psuedo Vector for C
 --------------------------------
 
-*Use C++ STL vectors, in C!*   
+*A port of C++ STL vectors for C*   
 
 **S**ohans **P**suedo **V**ector for C or **SPV** is a struct and a collection of functions in C which allows resizing, inserting, deleting, sorting of arrays and much much more.
 
