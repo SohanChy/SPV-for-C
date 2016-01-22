@@ -68,11 +68,19 @@ void SPVconstruct(int size, SPV* this)  //constructor function, zero initializes
     this->last = size-1;
 
     //zero initialization just to be safe.
-    int i;
-    for(i = this->first; i<=this->last; i++)
-    {
-        this->spv[i] = 0;
-    }
+    if(this->size > 0)
+        {
+            int i, counter = 0;
+
+            for(i = this->first; i<=this->last && counter<5; i++)	//if first 5 elements are 0, assume compiler zero initialized it.
+            {
+                if(this->spv[i] == 0)
+                {
+                    counter++;
+                }
+                this->spv[i] = 0;
+            }
+        }
 }
 
 void SPVconstructRaw(int size, SPV* this)  //constructor function, DOES NOT INITIALIZE, must be called by user before using SPV
