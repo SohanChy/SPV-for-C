@@ -30,11 +30,17 @@
 
 <hr>
 
-<p>Using SPV is as simple as typing:</p>
+<p>Using SPV is as simple as downloading the <a href="https://github.com/SohanChy/SPV-for-C/blob/master/spv.h">spv.h header file</a>, and copying it to your project directory(where your main.c file is).
+And including it by typing in the header:</p>
+
+<pre><code>#include "spv.h"
+</code></pre>
+
+<p>Then simply type in main() :</p>
 
 <pre><code>int size = 1;
 SPV example;
-SPVconstruct( size , &amp;example)
+SPVconstruct( size , &amp;example); 
 </code></pre>
 
 <p>Thats it!
