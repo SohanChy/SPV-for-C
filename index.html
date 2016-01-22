@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>SPV For C by SohanChy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">SPV For C</h1>
+      <h2 class="project-tagline">Use C++ STL vectors in C!</h2>
+      <a href="https://github.com/SohanChy/SPV-for-C" class="btn">View on GitHub</a>
+      <a href="https://github.com/SohanChy/SPV-for-C/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/SohanChy/SPV-for-C/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="spv---sohans-psuedo-vector-for-c" class="anchor" href="#spv---sohans-psuedo-vector-for-c" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SPV - Sohans Psuedo Vector for C</h2>
+
+<p><em>A port of C++ STL vectors for C</em>   </p>
+
+<p><strong>S</strong>ohans <strong>P</strong>suedo <strong>V</strong>ector for C or <strong>SPV</strong> is a struct and a collection of functions in C which allows resizing, inserting, deleting, sorting of arrays and much much more.</p>
+
+<p>SPV contains almost every feature of C++ STL vectors, but it does not claim to be as efficient or fast. SPV uses the same concept as C++ vectors, by creating new arrays and copying old arrays to it. The memory consumption and runtime can grow pretty large if the size of the array is significant because SPV does not have the optimizations of STL vectors. But for small programs or projects where C is necessary but memory is not that much of a concern and the data size is not extremely large, SPV can be used as a make shift alternative to C++ vector functionality.</p>
+
+<hr>
+
+<p>Using SPV is as simple as typing:</p>
+
+<pre><code>int size = 1;
+SPV example;
+SPVconstruct( size , &amp;example)
+</code></pre>
+
+<p>Thats it!
+Now you can use SPV as simply as:</p>
+
+<pre><code>example.spv[0] = 5;
+</code></pre>
+
+<p>SPVconstruct() MUST be called before using a SPV object, 
+it is recommended to call it right below the declaration.</p>
+
+<p>The default data type is int, but it can be easily changed by simply editing the spv.h file.</p>
+
+<pre><code>//Change %d to the appropriate printf format-specifier for your data type of choice.
+#define SPVprintf "%d "
+//Change int to whatever data type you want.
+typedef int SPVtype;
+</code></pre>
+
+<hr>
+
+<p><strong>Functions:</strong>
+ALL SPV functions start with the prefix SPV, they must be passed the address of a spv object and other necessary parameters.</p>
+
+<p><strong>Examples of use of various SPV functions:</strong></p>
+
+<pre><code>int arrSize = 5;
+int arr[] = {3,2,1,5,4};
+
+SPV test;
+
+SPVconstruct(arrSize,&amp;test);
+SPVassign(arr,&amp;test);
+
+SPVsort(&amp;test,1);
+
+SPVprint(&amp;test);
+
+SPVinsert(&amp;test,3,100);
+SPVprint(&amp;test);
+
+SPVdelete(&amp;test,3);
+SPVprint(&amp;test);
+
+SPVpop_front(&amp;test);
+SPVpop_back(&amp;test);
+
+test.spv[1] = 999;
+
+SPVprint(&amp;test);
+
+SPVswap(&amp;test,test.first,test.last);
+SPVprint(&amp;test);
+
+SPVclear(&amp;test);
+</code></pre>
+
+<p>Output of the above program should be:</p>
+
+<pre><code>1 2 3 4 5 
+1 2 3 100 4 5 
+1 2 3 4 5 
+2 999 4 
+4 999 2 
+</code></pre>
+
+<p>List of SPV functions:</p>
+
+<pre><code>void SPVconstruct(int size, SPV* this);  //constructor function, must be called by user before using SPV
+
+void SPVassign(SPVtype tArr[],SPV* this);    //assigns any passed array to the SPV array.
+
+void SPVprint(SPV* this);        //Prints the whole array with a newline at end.
+
+void SPVresize(SPV* this, int change);   //resize array, change can be positive or negative.
+
+void SPVclear(SPV* this);    //clears and frees all memory
+
+void SPVdelete(SPV* this, int position); //deletes element at specified position
+
+void SPVinsert(SPV* this, int position, SPVtype value); //inserts element at specified position
+
+void SPVswap(SPV* this,int fpos, int spos); //swaps elements of specified positions
+
+void SPVsort(SPV* this, int order);  //Sorts whole array, ascending if order is &gt;=0, descending if its negative.
+
+void SPVpush_back(SPV* this, SPVtype value); //Push element to end of array
+
+void SPVpush_front(SPV* this, SPVtype value);    //Push element to beginning of array
+
+void SPVpop_front(SPV* this);    //delete first element of array
+
+void SPVpop_back(SPV* this);     //delete last element of array
+</code></pre>
+
+<hr>
+
+<blockquote>
+<p>SPV for C
+Author: Sohan Chowdhury<br>
+Email:   <a href="mailto:Sifat3D@gmail.com">Sifat3D@gmail.com</a><br>
+Website: <a href="http://www.sohan.cf">www.sohan.cf</a> </p>
+</blockquote>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/SohanChy/SPV-for-C">SPV For C</a> is maintained by <a href="https://github.com/SohanChy">SohanChy</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37749531-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
