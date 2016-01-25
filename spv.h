@@ -12,7 +12,7 @@
                             Email: Sifat3D@gmail.com
                             Website: www.sohan.cf
 
-    
+
     Sohans Psuedo Vector for C or SPV is a struct and a collection of functions
     in C which allows resizing, inserting, deleting, sorting of arrays and much
     much more.
@@ -33,7 +33,7 @@
 
             //Thats it!
             //Now you can SPV as simply as:
-            
+
             example.spv[0] = 5;
 
         SPVconstruct() MUST be called before using a SPV object, it is recommended to
@@ -64,7 +64,7 @@ struct SPV{
 
 void SPVconstruct(int size, SPV* this)  //constructor function, zero initializes, must be called by user before using SPV
 {
-    this->spv = malloc(size*(sizeof(SPVtype)));
+    this->spv = calloc(size, sizeof(SPVtype));
     this->size = size;
     this->first = 0;
     this->last = size-1;
@@ -133,7 +133,7 @@ void SPVresize(SPV* this, int change)   //resize array, change can be positive o
     //then the old array pointer is reassigned to the temporary ones.
     //Making it the new array.
 
-    tmpArr = malloc(newSize*(sizeof(int)));
+    tmpArr = calloc(newSize, sizeof(int));
 
     int limit=0;
     if(newSize > this->size)
@@ -267,5 +267,5 @@ void SPVpop_back(SPV* this)     //delete last element of array
     SPVdelete(this,this->last);
 }
 
-
-#endif // SPV_H_INCLUDED
+// SPV_H_INCLUDED
+#endif
