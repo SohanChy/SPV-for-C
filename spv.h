@@ -68,24 +68,6 @@ void SPVconstruct(int size, SPV* this)  //constructor function, zero initializes
     this->size = size;
     this->first = 0;
     this->last = size-1;
-
-    //zero initialization just to be safe.
-    if(this->size > 0)
-        {
-            int i, counter = 0;
-
-            for(i = this->first; i<=this->last && counter<5; i++)
-            {
-                if(this->spv[i] == 0)
-                {
-                    counter++;
-                }
-                else
-                {
-                    this->spv[i] = 0;
-                }
-            }
-        }
 }
 
 void SPVconstructRaw(int size, SPV* this)  //constructor function, DOES NOT INITIALIZE, must be called by user before using SPV
@@ -139,21 +121,6 @@ void SPVresize(SPV* this, int change)   //resize array, change can be positive o
     if(newSize > this->size)
         {
             limit = this->size;
-
-            //zero initialization just to be safe
-            int i, counter = 0;
-
-            for(i = this->last; i<= (newSize-1) && counter<5; i++)
-            {
-                if(tmpArr[i] == 0)
-                {
-                    counter++;
-                }
-                else
-                {
-                    tmpArr[i] = 0;
-                }
-            }
         }
     else
         {
