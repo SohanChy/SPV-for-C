@@ -41,43 +41,40 @@
 *****************************************************************************************
 */
 
-
-
-int main()
+int main(void)
 {
+    int arrSize = 5;
+    int arr[] = { 3, 2, 1, 5, 4 };
 
-int arrSize = 5;
-int arr[] = {3,2,1,5,4};
+    //Examples of various SPV functions and uses
 
-//Examples of various SPV functions and uses
+    SPV test;
 
-SPV test;
+    SPVconstruct(arrSize, &test);
+    SPVassign(arr, &test);
 
-SPVconstruct(arrSize,&test);
-SPVassign(arr,&test);
+    SPVsort(&test, 1);
 
-SPVsort(&test,1);
+    SPVprint(&test);
 
-SPVprint(&test);
+    SPVinsert(&test, 3, 100);
+    SPVprint(&test);
 
-SPVinsert(&test,3,100);
-SPVprint(&test);
+    SPVdelete(&test, 3);
+    SPVprint(&test);
 
-SPVdelete(&test,3);
-SPVprint(&test);
+    SPVpop_front(&test);
+    SPVpop_back(&test);
 
-SPVpop_front(&test);
-SPVpop_back(&test);
+    test.spv[1] = 999;
 
-test.spv[1] = 999;
+    SPVprint(&test);
 
-SPVprint(&test);
+    SPVswap(&test, test.first, test.last);
+    SPVprint(&test);
 
-SPVswap(&test,test.first,test.last);
-SPVprint(&test);
+    SPVclear(&test);
 
-SPVclear(&test);
-
-   return 0;
+    return 0;
 }
 
