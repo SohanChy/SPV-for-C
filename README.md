@@ -12,8 +12,9 @@ SPV contains almost every feature of C++ STL vectors, but it does not claim to b
 ----------
 
 
-Using SPV is as simple as downloading the [spv.h header file](https://github.com/SohanChy/SPV-for-C/blob/master/spv.h), and copying it to your project directory(where your main.c file is).
-And including it by typing in the header:
+Using SPV is as simple as downloading the [spv files](https://github.com/SohanChy/SPV-for-C/archive/master.zip), extracting the zip and then copying them to your project directory(where your main.c file is).
+Add them to your project and then
+Include by typing in the header:
 
     #include "spv.h"
 
@@ -28,8 +29,8 @@ Now you can use SPV as simply as:
 
     example.spv[0] = 5;
 
-SPVconstruct() MUST be called before using a SPV object,
-it is recommended to call it right below the declaration.
+SPVconstruct() MUST be called before using a SPV object, it is recommended to call it right below the declaration.
+And SPVdestroy() must be called after the SPV object is no longer needed to clear the memory.
 
 The default data type is int, but it can be easily changed by simply editing the spv.h file.
 
@@ -73,7 +74,7 @@ ALL SPV functions start with the prefix SPV, they must be passed the address of 
     SPVswap(&test,test.first,test.last);
     SPVprint(&test);
 
-    SPVclear(&test);
+    SPVdestroy(&test);
 
 Output of the above program should be:
 
@@ -93,7 +94,7 @@ List of SPV functions:
 
     void SPVresize(SPV* this, int change);   //resize array, change can be positive or negative.
 
-    void SPVclear(SPV* this);    //clears and frees all memory
+    void SPVdestroy(SPV* this);    //clears and frees all memory
 
     void SPVdelete(SPV* this, int position); //deletes element at specified position
 

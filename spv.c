@@ -1,3 +1,15 @@
+/*
+*****************************************************************************************
+                        SPV - Sohans Psuedo Vector for C
+                            Use C++ STL vectors, in C!
+                            Author: Sohan Chowdhury
+                            Email: Sifat3D@gmail.com
+                            Website: www.sohan.cf
+
+                        Check README.md for brief instructions.
+*****************************************************************************************
+*/
+
 #include "spv.h"
 
 void SPVconstruct(int size, SPV* this) //constructor function, zero initializes, must be called by user before using SPV
@@ -70,7 +82,7 @@ void SPVresize(SPV* this, int change) //resize array, change can be positive or 
     this->last = newSize - 1;
 }
 
-void SPVclear(SPV* this) //clears and frees all memory
+void SPVdestroy(SPV* this) //clears and frees all memory
 {
     free(this->spv);
     this->size = 0;
