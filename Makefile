@@ -1,10 +1,15 @@
 #
 # Makefile
 # author : Emrul Hasan Zawad
-#
+# modified to include compiler check by: Sohan Chowdhury
 
-# compiler to use
-CC = clang
+# compiler to use, clang is default, if clang ne, then gcc
+ERR = $(shell which clang >/dev/null; echo $$?)
+ifeq "$(ERR)" "0"
+    CC = clang
+else
+    CC = gcc
+endif
 
 # flags to pass compiler
 CFLAGS = -ggdb3 -O0 -std=c11 -Wall -Werror
