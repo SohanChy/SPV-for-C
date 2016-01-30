@@ -22,7 +22,7 @@
       <h2>
 <a id="spv---sohans-psuedo-vector-for-c" class="anchor" href="#spv---sohans-psuedo-vector-for-c" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SPV - Sohans Psuedo Vector for C</h2>
 
-<p><em>A port of C++ STL vectors for C</em>   </p>
+<p><em>A port of C++ STL vectors for C</em></p>
 
 <p><strong>S</strong>ohans <strong>P</strong>suedo <strong>V</strong>ector for C or <strong>SPV</strong> is a struct and a collection of functions in C which allows resizing, inserting, deleting, sorting of arrays and much much more.</p>
 
@@ -30,8 +30,9 @@
 
 <hr>
 
-<p>Using SPV is as simple as downloading the <a href="https://github.com/SohanChy/SPV-for-C/blob/master/spv.h">spv.h header file</a>, and copying it to your project directory(where your main.c file is).
-And including it by typing in the header:</p>
+<p>Using SPV is as simple as downloading the <a href="https://github.com/SohanChy/SPV-for-C/archive/master.zip">spv files</a>, extracting the zip and then copying them to your project directory(where your main.c file is).
+Add them to your project and then
+Include by typing in the header:</p>
 
 <pre><code>#include "spv.h"
 </code></pre>
@@ -40,7 +41,7 @@ And including it by typing in the header:</p>
 
 <pre><code>int size = 1;
 SPV example;
-SPVconstruct( size , &amp;example); 
+SPVconstruct( size , &amp;example);
 </code></pre>
 
 <p>Thats it!
@@ -49,8 +50,8 @@ Now you can use SPV as simply as:</p>
 <pre><code>example.spv[0] = 5;
 </code></pre>
 
-<p>SPVconstruct() MUST be called before using a SPV object, 
-it is recommended to call it right below the declaration.</p>
+<p>SPVconstruct() MUST be called before using a SPV object, it is recommended to call it right below the declaration.
+And SPVdestroy() must be called after the SPV object is no longer needed to clear the memory.</p>
 
 <p>The default data type is int, but it can be easily changed by simply editing the spv.h file.</p>
 
@@ -95,16 +96,16 @@ SPVprint(&amp;test);
 SPVswap(&amp;test,test.first,test.last);
 SPVprint(&amp;test);
 
-SPVclear(&amp;test);
+SPVdestroy(&amp;test);
 </code></pre>
 
 <p>Output of the above program should be:</p>
 
-<pre><code>1 2 3 4 5 
-1 2 3 100 4 5 
-1 2 3 4 5 
-2 999 4 
-4 999 2 
+<pre><code>1 2 3 4 5
+1 2 3 100 4 5
+1 2 3 4 5
+2 999 4
+4 999 2
 </code></pre>
 
 <p>List of SPV functions:</p>
@@ -117,7 +118,7 @@ void SPVprint(SPV* this);        //Prints the whole array with a newline at end.
 
 void SPVresize(SPV* this, int change);   //resize array, change can be positive or negative.
 
-void SPVclear(SPV* this);    //clears and frees all memory
+void SPVdestroy(SPV* this);    //clears and frees all memory
 
 void SPVdelete(SPV* this, int position); //deletes element at specified position
 
@@ -138,11 +139,37 @@ void SPVpop_back(SPV* this);     //delete last element of array
 
 <hr>
 
+<h2>
+<a id="refactoring-with-clang-format" class="anchor" href="#refactoring-with-clang-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Refactoring with clang-format</h2>
+
+<blockquote>
+<p>Code Style  WebKit</p>
+</blockquote>
+
+<pre><code>https://webkit.org/code-style-guidelines/
+</code></pre>
+
+<h3>
+<a id="makefile-has-been-added-for-automated-build" class="anchor" href="#makefile-has-been-added-for-automated-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Makefile Has been added for automated build</h3>
+
+<pre><code>&gt; To compile program
+
+    make
+
+&gt; To clean obj files
+
+    make clean
+
+&gt; for housekeeping with executables
+
+    make allclean
+</code></pre>
+
 <blockquote>
 <p>SPV for C
-Author: Sohan Chowdhury<br>
-Email:   <a href="mailto:Sifat3D@gmail.com">Sifat3D@gmail.com</a><br>
-Website: <a href="http://www.sohan.cf">www.sohan.cf</a> </p>
+Author: Sohan Chowdhury
+Email:   <a href="mailto:Sifat3D@gmail.com">Sifat3D@gmail.com</a>
+Website: <a href="http://www.sohan.cf">www.sohan.cf</a></p>
 </blockquote>
 
       <footer class="site-footer">
