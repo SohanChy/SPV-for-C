@@ -25,7 +25,7 @@ HDRS = spv.h
 LIBS =
 
 # space-separated list of source files
-SRCS = example.c spv.c
+SRCS = example.c
 
 # automatically generated list of object files
 OBJS = $(SRCS:.c=.o)
